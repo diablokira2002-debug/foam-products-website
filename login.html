@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فيلورا للإسفنج والمراتب | تسجيل الدخول</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="foam-v3">
+
+<!-- رأس مبسّط لصفحة الدخول (بدون خانة بحث/تسجيل دخول لتفادي التكرار) -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <a href="index.html" class="brand" title="فيلورا للإسفنج والمراتب">
+    <div class="brand-icon">
+        <svg viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 4 16 L 25 4 L 46 16 L 25 28 Z" fill="#0D9488"/>
+            <path d="M 4 16 L 25 28 L 25 36 L 4 24 Z" fill="#0F766E"/>
+            <path d="M 46 16 L 25 28 L 25 36 L 46 24 Z" fill="#14B8A6"/>
+            <path d="M 12 6 L 25 22 L 38 2" stroke="#163B4D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="brand-text">
+        <span class="brand-title">فيلورا</span>
+        <span class="brand-subtitle">للإسفنج والمراتب</span>
+    </div>
+</a>
+      <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> العودة للرئيسية</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= صفحة تسجيل الدخول / إنشاء حساب ============================= -->
+<main class="auth-page">
+  <div class="auth-box">
+
+    <!-- تبويبات: تسجيل الدخول | إنشاء حساب جديد -->
+    <div class="auth-tabs">
+      <div class="auth-tab active" data-target="loginForm">تسجيل الدخول</div>
+      <div class="auth-tab" data-target="registerForm">إنشاء حساب جديد</div>
+    </div>
+
+    <div class="auth-body">
+      <div class="logo-mark">
+        <img src="images/logo.png" alt="شعار المصنع" onerror="this.src='https://placehold.co/90x90/163B4D/FFFFFF?text=LOGO'"> <!-- << شعار المصنع -->
+      </div>
+
+      <!-- ============ نموذج تسجيل الدخول ============ -->
+      <form id="loginForm" class="auth-form active">
+        <h1>مرحبًا بعودتك</h1>
+        <div class="field-error mb-2" id="loginError" style="display:none;"></div>
+
+        <div class="form-group">
+          <label>اسم المستخدم أو البريد الإلكتروني</label>
+          <input type="text" class="form-control" id="loginUsername" placeholder="اسم المستخدم" required>
+        </div>
+        <div class="form-group">
+          <label>كلمة المرور</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required>
+        </div>
+
+        <div class="auth-links">
+          <label class="form-check">
+            <input type="checkbox" id="rememberMe"> تذكرني
+          </label>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">نسيت كلمة المرور؟</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
+
+        <div class="auth-divider">أو</div>
+        <p class="auth-switch">ليس لديك حساب؟ <a href="#" onclick="$('.auth-tab[data-target=registerForm]').click(); return false;">أنشئ حسابًا جديدًا</a></p>
+      </form>
+
+      <!-- ============ نموذج إنشاء حساب جديد ============ -->
+      <form id="registerForm" class="auth-form">
+        <h1>إنشاء حساب جديد</h1>
+        <div class="field-error mb-2" id="registerError" style="display:none;"></div>
+
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input type="text" class="form-control" id="registerName" placeholder="اسمك الكامل" required>
+        </div>
+        <div class="form-group">
+          <label>اسم المستخدم</label>
+          <input type="text" class="form-control" id="registerUsername" placeholder="اسم مستخدم فريد" required>
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" class="form-control" id="registerEmail" placeholder="example@mail.com" required>
+        </div>
+        <div class="form-group">
+          <label>كلمة المرور</label>
+          <input type="password" class="form-control" id="registerPassword" placeholder="8 خانات على الأقل" required>
+        </div>
+        <div class="form-group">
+          <label>تأكيد كلمة المرور</label>
+          <input type="password" class="form-control" id="registerConfirmPassword" required>
+        </div>
+
+        <label class="form-check mb-3">
+          <input type="checkbox" id="registerTerms" required> أوافق على <a href="#">الشروط والأحكام</a>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-block">إنشاء الحساب</button>
+
+        <div class="auth-divider">أو</div>
+        <p class="auth-switch">لديك حساب بالفعل؟ <a href="#" onclick="$('.auth-tab[data-target=loginForm]').click(); return false;">سجّل الدخول</a></p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- ======================= نافذة نسيت كلمة المرور (رمز تحقق بالبريد) ======================= -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa-solid fa-key"></i> استرجاع كلمة المرور</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="step-badge">
+          <span class="active" data-step="1">١. إدخال البريد</span>
+          <span data-step="2">٢. التحقق وكلمة مرور جديدة</span>
+        </div>
+
+        <div class="step-pane active" data-step="1">
+          <div class="form-group">
+            <label>البريد الإلكتروني المسجل</label>
+            <input type="email" class="form-control" id="forgotEmail" placeholder="example@mail.com" required>
+          </div>
+          <button type="button" id="sendForgotCodeBtn" class="btn btn-primary btn-block">إرسال رمز التحقق</button>
+        </div>
+
+        <div class="step-pane" data-step="2">
+          <form id="forgotVerifyForm">
+            <div class="form-group">
+              <label>رمز التحقق</label>
+              <input type="text" class="form-control" id="forgotCodeInput" maxlength="4" placeholder="ادخل الرمز المكوّن من 4 أرقام" required>
+            </div>
+            <div class="form-group">
+              <label>كلمة المرور الجديدة</label>
+              <input type="password" class="form-control" id="forgotNewPassword" placeholder="8 خانات على الأقل" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">تعيين كلمة المرور</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- التذييل -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="yearNow">2026</span> فيلورا للإسفنج والمراتب - جميع الحقوق محفوظة</p>
+    <div class="footer-social">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/967784702558" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+/* V4: تسجيل الحساب يعمل مباشرة بالـ JavaScript الأصلي، بدون الاعتماد على jQuery. */
+document.addEventListener('DOMContentLoaded', function () {
+  const tabs = document.querySelectorAll('.auth-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      const target = this.getAttribute('data-target');
+      tabs.forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      this.classList.add('active');
+      const form = document.getElementById(target);
+      if(form) form.classList.add('active');
+    });
+  });
+
+  const form = document.getElementById('registerForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    const err = document.getElementById('registerError');
+    const show = function(msg){ err.textContent = msg; err.style.display = 'block'; err.scrollIntoView({behavior:'smooth', block:'center'}); };
+    const value = id => (document.getElementById(id)?.value || '').trim();
+    const name = value('registerName');
+    const username = value('registerUsername');
+    const email = value('registerEmail').toLowerCase();
+    const password = document.getElementById('registerPassword')?.value || '';
+    const confirm = document.getElementById('registerConfirmPassword')?.value || '';
+    const terms = document.getElementById('registerTerms');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const usernameRegex = /^[A-Za-z0-9_\u0600-\u06FF.-]{3,30}$/;
+
+    err.style.display = 'none';
+    if(name.length < 2) return show('يرجى إدخال الاسم الكامل بشكل صحيح.');
+    if(!usernameRegex.test(username)) return show('اسم المستخدم يجب أن يكون من 3 إلى 30 حرفًا أو رقمًا.');
+    if(!emailRegex.test(email)) return show('يرجى إدخال بريد إلكتروني صحيح.');
+    if(password.length < 8) return show('كلمة المرور يجب ألا تقل عن 8 خانات.');
+    if(password !== confirm) return show('كلمتا المرور غير متطابقتين.');
+    if(!terms || !terms.checked) return show('يجب الموافقة على الشروط والأحكام.');
+
+    let users = [];
+    try { users = JSON.parse(localStorage.getItem('foam_users') || '[]'); if(!Array.isArray(users)) users=[]; } catch(_) { users=[]; }
+    if(users.some(u => String(u.username || '').toLowerCase() === username.toLowerCase())) return show('اسم المستخدم مستخدم بالفعل.');
+    if(users.some(u => String(u.email || '').toLowerCase() === email)) return show('البريد الإلكتروني مستخدم بالفعل.');
+
+    const user = {id:'u_'+Date.now(), name, username, email, password, avatar:'', createdAt:new Date().toISOString()};
+    users.push(user);
+    localStorage.setItem('foam_users', JSON.stringify(users));
+    localStorage.setItem('foam_user', JSON.stringify(user));
+    sessionStorage.removeItem('foam_user');
+    err.style.display='none';
+    alert('تم إنشاء الحساب بنجاح وتسجيل الدخول تلقائيًا.');
+    window.location.href='index.html';
+  });
+});
+</script>
+<script src="js/script.js"></script>
+<script>document.getElementById('yearNow').textContent = new Date().getFullYear();</script>
+</body>
+</html>

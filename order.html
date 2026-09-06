@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فيلورا للإسفنج والمراتب | طلب المنتجات</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="foam-v3 order-sketch-page">
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <a href="index.html" class="brand" title="فيلورا للإسفنج والمراتب">
+    <div class="brand-icon">
+        <svg viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 4 16 L 25 4 L 46 16 L 25 28 Z" fill="#0D9488"/>
+            <path d="M 4 16 L 25 28 L 25 36 L 4 24 Z" fill="#0F766E"/>
+            <path d="M 46 16 L 25 28 L 25 36 L 46 24 Z" fill="#14B8A6"/>
+            <path d="M 12 6 L 25 22 L 38 2" stroke="#163B4D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="brand-text">
+        <span class="brand-title">فيلورا</span>
+        <span class="brand-subtitle">للإسفنج والمراتب</span>
+    </div>
+</a>
+      <form class="search-form" role="search" onsubmit="return false;"><input type="search" class="search-input" placeholder="ابحث عن منتج..."><button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button></form>
+      <!-- ================= أيقونة سلة الطلبات =================
+     تظهر بين البحث وتسجيل الدخول.
+     headerCart: معرف زر السلة الذي يتعامل معه JavaScript.
+     headerCartCount: عداد عدد عناصر السلة.
+     الرابط ينقل العميل إلى قسم السلة في صفحة الطلب.
+========================================================== -->
+<a href="order.html#cart"
+   class="header-cart"
+   id="headerCart"
+   title="سلة الطلبات"
+   aria-label="سلة الطلبات">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span class="header-cart-badge" id="headerCartCount">0</span>
+</a>
+
+<div class="auth-area"><a href="login.html" class="btn-login" id="loginBtn"><i class="fa-solid fa-user"></i><span>تسجيل الدخول</span></a><div class="dropdown"><div class="profile-circle d-none" id="profileCircle" data-bs-toggle="dropdown"><img src="images/user-avatar-default.png" id="profileAvatar" alt="صورة المستخدم"></div><ul class="dropdown-menu dropdown-menu-end profile-menu" id="profileMenu"><li><h6 class="dropdown-header profile-name-display">مستخدم</h6></li><li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="fa-solid fa-pen"></i> تعديل الملف الشخصي</button></li><li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal"><i class="fa-solid fa-key"></i> تغيير كلمة المرور</button></li><li><hr class="dropdown-divider"></li><li><button class="dropdown-item text-danger" type="button" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button></li></ul></div></div>
+    </div>
+  </div>
+  <nav class="main-nav"><div class="container nav-inner"><a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a><a href="products.html" class="nav-item"><i class="fa-solid fa-couch"></i><span>المنتجات</span></a><a href="order.html" class="nav-item active"><i class="fa-solid fa-ruler-combined"></i><span>طلب المنتجات</span></a><a href="about.html" class="nav-item"><i class="fa-solid fa-industry"></i><span>نبذة عنا</span></a><a href="contact.html" class="nav-item"><i class="fa-solid fa-phone"></i><span>اتصل بنا</span></a></div></nav>
+</header>
+
+<main class="order-page sketch-order">
+  <div class="container">
+    <div class="sketch-order-title">
+      <span class="eyebrow">فيلورا للإسفنج والمراتب</span>
+      <h1>طلب المنتجات</h1>
+      <p>اختر نوع المادة، أبعاد المنتج، وخيارات الطبقة الناعمة. سيظهر السعر التقريبي مباشرة.</p>
+    </div>
+
+    <form id="customOrderForm" class="order-builder">
+      <!-- القسم الأيسر: مادة التنجيد والطبقة الناعمة -->
+      <section class="builder-panel panel-left">
+        <div class="builder-heading"><span class="heading-icon"><i class="fa-solid fa-couch"></i></span><div><h2>خيارات التنجيد</h2><small>كما في المخطط المرفق</small></div></div>
+
+        <div class="sketch-field">
+          <label for="upholsteryType">نوع مادة التنجيد</label>
+          <select id="upholsteryType" class="form-select" required>
+            <option value="striped">قماش مخطط</option>
+            <option value="plain">قماش سادة</option>
+            <option value="velvet">مخمل</option>
+            <option value="leather">جلد صناعي</option>
+            <option value="none">بدون تنجيد</option>
+          </select>
+        </div>
+
+        <div class="sketch-field">
+          <label for="softLayerType">نوع مادة الطبقة الناعمة</label>
+          <select id="softLayerType" class="form-select">
+            <option value="super">سوبر إسفنج</option>
+            <option value="memory">إسفنج ميموري</option>
+            <option value="fiber">فايبر ناعم</option>
+            <option value="none">بدون طبقة ناعمة</option>
+          </select>
+        </div>
+
+        <div class="soft-options-box">
+          <h3><i class="fa-solid fa-layer-group"></i> خيارات الطبقة الناعمة</h3>
+          <label class="check-row"><input type="checkbox" id="noSoftLayer"><span>منطقة بدون طبقة ناعمة</span></label>
+          <div class="two-inputs">
+            <div><label for="softTop">الجهة العلوية</label><div class="input-unit"><input type="number" min="0" step="0.5" id="softTop" placeholder="0"><b>سم</b></div></div>
+            <div><label for="softBottom">الجهة السفلية</label><div class="input-unit"><input type="number" min="0" step="0.5" id="softBottom" placeholder="0"><b>سم</b></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- الوسط: رسم توضيحي للأبعاد -->
+      <section class="builder-panel panel-center">
+        <div class="builder-heading center-heading"><span class="heading-icon"><i class="fa-solid fa-cube"></i></span><div><h2>شكل المنتج</h2><small>المقاس المدخل يظهر على الرسم</small></div></div>
+        <div class="foam-preview-wrap">
+          <div class="dimension-label dim-height"><span id="previewHeight">0</span> سم</div>
+          <div class="foam-stack" id="foamStack">
+            <div class="foam-layer layer-top"></div>
+            <div class="foam-layer layer-middle"></div>
+            <div class="foam-layer layer-bottom"></div>
+          </div>
+          <div class="dimension-label dim-width"><span id="previewWidth">0</span> سم</div>
+          <div class="dimension-label dim-length"><span id="previewLength">0</span> سم</div>
+        </div>
+        <div class="preview-caption"><i class="fa-solid fa-circle-info"></i> الرسم توضيحي فقط، والتنفيذ الفعلي حسب المقاسات التي تدخلها.</div>
+      </section>
+
+      <!-- القسم الأيمن: نوع المادة والأبعاد والسعر -->
+      <section class="builder-panel panel-right">
+        <div class="builder-heading"><span class="heading-icon"><i class="fa-solid fa-cube"></i></span><div><h2>بيانات المنتج</h2><small>أدخل الأبعاد المطلوبة</small></div></div>
+
+        <div class="sketch-field">
+          <label for="foamType">نوع مادة المنتج</label>
+          <select class="form-select" id="foamType" required>
+            <option value="super">سوبر</option>
+            <option value="regular">إسفنج عادي</option>
+            <option value="medium">إسفنج متوسط الكثافة</option>
+            <option value="high">إسفنج كثافة عالية</option>
+            <option value="medical">إسفنج طبي</option>
+          </select>
+        </div>
+
+        <div class="dimension-form">
+          <div class="sketch-field"><label for="dimLength">أدخل الطول</label><div class="input-unit"><input type="number" min="1" step="0.5" class="form-control" id="dimLength" required placeholder="مثال: 200"><b>سم</b></div></div>
+          <div class="sketch-field"><label for="dimWidth">أدخل العرض</label><div class="input-unit"><input type="number" min="1" step="0.5" class="form-control" id="dimWidth" required placeholder="مثال: 100"><b>سم</b></div></div>
+          <div class="sketch-field"><label for="dimHeight">أدخل الارتفاع / السمك</label><div class="input-unit"><input type="number" min="1" step="0.5" class="form-control" id="dimHeight" required placeholder="مثال: 10"><b>سم</b></div></div>
+        </div>
+
+        <div class="sketch-field"><label for="dimQty">الكمية</label><div class="qty-control"><button type="button" id="qtyMinus">−</button><input type="number" min="1" value="1" id="dimQty" required><button type="button" id="qtyPlus">+</button></div></div>
+
+        <div class="estimated-price-card">
+          <div><span>السعر للقطعة</span><strong id="summaryUnitPrice">—</strong></div>
+          <div class="estimated-total"><span>السعر التقريبي الإجمالي</span><strong id="summaryTotalPrice">—</strong></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block builder-submit"><i class="fa-solid fa-cart-plus"></i> إضافة إلى السلة</button>
+      </section>
+    </form>
+
+    <!-- السلة أسفل التصميم -->
+    <section class="cart-card sketch-cart-card" id="cart">
+      <div class="cart-head"><h2><i class="fa-solid fa-basket-shopping"></i> سلة الطلبات <span class="cart-count-pill" id="cartCount">0</span></h2><span class="cart-hint">يمكنك إضافة أكثر من قطعة قبل تأكيد الطلب</span></div>
+      <div id="cartItemsList"></div>
+      <div class="cart-bottom-row">
+        <div class="delivery-box"><label>طريقة الاستلام</label><div class="delivery-options"><label class="shape-option active"><input type="radio" name="deliveryMethod" value="pickup" checked><i class="fa-solid fa-store"></i> استلام من المصنع</label><label class="shape-option"><input type="radio" name="deliveryMethod" value="delivery"><i class="fa-solid fa-truck"></i> توصيل</label></div></div>
+        <div class="cart-total"><span>المجموع الكلي</span><strong id="cartGrandTotal">0.00 ر.ي</strong></div>
+        <button type="button" id="checkoutBtn" class="btn btn-primary checkout-main-btn"><i class="fa-solid fa-check"></i> تأكيد الطلب</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="container footer-inner"><p>© <span id="yearNow">2026</span> فيلورا للإسفنج والمراتب - جميع الحقوق محفوظة</p><div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="https://wa.me/967784702558" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div></div></footer>
+
+<!-- نوافذ الحسابات: نفس النوافذ المستخدمة في باقي الصفحات -->
+<div class="modal fade" id="editProfileModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title"><i class="fa-solid fa-pen"></i> تعديل الملف الشخصي</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><form id="editProfileForm"><div class="modal-body"><div class="text-center mb-3"><img id="editAvatarPreview" src="images/user-avatar-default.png" alt="صورة الملف الشخصي" style="width:90px;height:90px;border-radius:50%;object-fit:cover"><div class="mt-2"><label class="btn btn-outline btn-sm" style="cursor:pointer">تغيير الصورة <input type="file" id="editAvatarInput" accept="image/*" hidden></label></div></div><div class="form-group"><label>الاسم</label><input type="text" class="form-control" id="editName" required></div><div class="form-group"><label>اسم المستخدم</label><input type="text" class="form-control" id="editUsername" required></div></div><div class="modal-footer"><button type="submit" class="btn btn-primary btn-block">حفظ التعديلات</button></div></form></div></div></div>
+<div class="modal fade" id="changePasswordModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title"><i class="fa-solid fa-key"></i> تغيير كلمة المرور</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="step-badge"><span class="active" data-step="1">١. طلب الرمز</span><span data-step="2">٢. التحقق والتغيير</span></div><div class="step-pane active" data-step="1"><p>سيتم إرسال رمز تحقق إلى بريدك الإلكتروني المسجل: <b id="pwdEmailDisplay">example@mail.com</b></p><button type="button" id="sendCodeBtn" class="btn btn-primary btn-block">إرسال رمز التحقق</button></div><div class="step-pane" data-step="2"><form id="verifyCodeForm"><div class="form-group"><label>رمز التحقق</label><input type="text" class="form-control" id="codeInput" maxlength="4" required></div><div class="form-group"><label>كلمة المرور الجديدة</label><input type="password" class="form-control" id="newPasswordInput" required></div><div class="form-group"><label>تأكيد كلمة المرور</label><input type="password" class="form-control" id="confirmPasswordInput" required></div><div id="codeError" class="field-error"></div><div id="passError" class="field-error"></div><button class="btn btn-primary btn-block" type="submit">حفظ كلمة المرور</button></form></div></div></div></div>
+<script src="js/jquery-3.7.1.min.js"></script><script src="js/bootstrap.bundle.min.js"></script><script src="js/script.js"></script>
+</body></html>

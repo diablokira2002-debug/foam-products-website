@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة إدارة مصنع النخبة</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.admin-page{padding:40px 0;background:#f6f8f9;min-height:80vh}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}.admin-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.admin-stat{background:#fff;border:1px solid var(--color-border);border-radius:16px;padding:22px;box-shadow:var(--shadow-soft)}.admin-stat i{font-size:24px;color:var(--color-accent)}.admin-stat strong{display:block;font-size:28px;margin-top:8px}.admin-table{background:#fff;border-radius:16px;overflow:auto;border:1px solid var(--color-border);box-shadow:var(--shadow-soft)}.admin-table table{margin:0;min-width:850px}.admin-section{margin-top:25px}.status-select{min-width:130px}@media(max-width:900px){.admin-cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.admin-cards{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head><body class="foam-v3">
+<header class="site-header"><div class="header-top"><div class="container header-top-inner"><a href="index.html" class="brand"><img src="images/logo.png" class="brand-logo" alt="شعار"><span class="brand-name">مصنع النخبة للإسفنج</span></a><a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> الموقع</a></div></div></header>
+<main class="admin-page"><div class="container">
+<div class="admin-head"><div><h1>لوحة التحكم</h1><p class="text-muted mb-0">إدارة الطلبات والرسائل والحسابات المحفوظة على هذا الجهاز.</p></div><button id="clearDemoData" class="btn btn-outline text-danger"><i class="fa-solid fa-trash"></i> حذف بيانات التجربة</button></div>
+<div class="admin-cards"><div class="admin-stat"><i class="fa-solid fa-box"></i><strong id="statOrders">0</strong><span>الطلبات</span></div><div class="admin-stat"><i class="fa-solid fa-users"></i><strong id="statUsers">0</strong><span>العملاء</span></div><div class="admin-stat"><i class="fa-solid fa-envelope"></i><strong id="statMessages">0</strong><span>الرسائل</span></div><div class="admin-stat"><i class="fa-solid fa-money-bill"></i><strong id="statSales">0</strong><span>إجمالي الطلبات ر.ي</span></div></div>
+<section class="admin-section"><h2>الطلبات</h2><div class="admin-table"><table class="table table-hover"><thead><tr><th>رقم الطلب</th><th>العميل</th><th>الهاتف</th><th>المدينة</th><th>الإجمالي</th><th>الاستلام</th><th>الحالة</th><th>التاريخ</th></tr></thead><tbody id="ordersBody"></tbody></table></div></section>
+<section class="admin-section"><h2>الرسائل</h2><div class="admin-table"><table class="table table-hover"><thead><tr><th>الاسم</th><th>البريد</th><th>الموضوع</th><th>الرسالة</th><th>التاريخ</th></tr></thead><tbody id="messagesBody"></tbody></table></div></section>
+</div></main>
+<script>
+const j=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+function render(){const orders=j('foam_orders'),users=j('foam_users'),msgs=j('foam_messages');document.getElementById('statOrders').textContent=orders.length;document.getElementById('statUsers').textContent=users.length;document.getElementById('statMessages').textContent=msgs.length;document.getElementById('statSales').textContent=orders.reduce((s,o)=>s+Number(o.total||0),0).toFixed(2);
+const ob=document.getElementById('ordersBody');ob.innerHTML=orders.length?orders.slice().reverse().map((o,ri)=>`<tr><td>${o.id}</td><td>${o.customer.name}</td><td>${o.customer.phone}</td><td>${o.customer.city}</td><td>${Number(o.total).toFixed(2)}</td><td>${o.delivery==='delivery'?'توصيل':'استلام'}</td><td><select class="form-select form-select-sm status-select" onchange="updateStatus(${orders.length-1-ri},this.value)"><option ${o.status==='جديد'?'selected':''}>جديد</option><option ${o.status==='قيد التنفيذ'?'selected':''}>قيد التنفيذ</option><option ${o.status==='جاهز'?'selected':''}>جاهز</option><option ${o.status==='مكتمل'?'selected':''}>مكتمل</option><option ${o.status==='ملغي'?'selected':''}>ملغي</option></select></td><td>${new Date(o.createdAt).toLocaleString('ar')}</td></tr>`).join(''):'<tr><td colspan="8" class="text-center">لا توجد طلبات بعد.</td></tr>';
+const mb=document.getElementById('messagesBody');mb.innerHTML=msgs.length?msgs.slice().reverse().map(m=>`<tr><td>${m.name}</td><td>${m.email}</td><td>${m.subject}</td><td style="min-width:260px">${m.message}</td><td>${new Date(m.createdAt).toLocaleString('ar')}</td></tr>`).join(''):'<tr><td colspan="5" class="text-center">لا توجد رسائل بعد.</td></tr>';}
+function updateStatus(i,v){const o=j('foam_orders');if(o[i]){o[i].status=v;localStorage.setItem('foam_orders',JSON.stringify(o));render();}}
+document.getElementById('clearDemoData').onclick=()=>{if(confirm('هل تريد حذف حسابات وطلبات ورسائل هذا الجهاز؟')){['foam_users','foam_user','foam_cart','foam_orders','foam_messages'].forEach(k=>localStorage.removeItem(k));render();}};render();
+</script></body></html>

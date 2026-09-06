@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فيلورا للإسفنج والمراتب | المنتجات</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="foam-v3">
+
+<!-- ============================= الرأس (نفس الرأس المستخدم في كل الصفحات) ============================= -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <a href="index.html" class="brand" title="فيلورا للإسفنج والمراتب">
+    <div class="brand-icon">
+        <svg viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 4 16 L 25 4 L 46 16 L 25 28 Z" fill="#0D9488"/>
+            <path d="M 4 16 L 25 28 L 25 36 L 4 24 Z" fill="#0F766E"/>
+            <path d="M 46 16 L 25 28 L 25 36 L 46 24 Z" fill="#14B8A6"/>
+            <path d="M 12 6 L 25 22 L 38 2" stroke="#163B4D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="brand-text">
+        <span class="brand-title">فيلورا</span>
+        <span class="brand-subtitle">للإسفنج والمراتب</span>
+    </div>
+</a>
+      <form class="search-form" role="search" onsubmit="return false;">
+        <input type="search" class="search-input" placeholder="ابحث عن منتج... (مثال: مرتبة، كنب)">
+        <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      <!-- ================= أيقونة سلة الطلبات =================
+     تظهر بين البحث وتسجيل الدخول.
+     headerCart: معرف زر السلة الذي يتعامل معه JavaScript.
+     headerCartCount: عداد عدد عناصر السلة.
+     الرابط ينقل العميل إلى قسم السلة في صفحة الطلب.
+========================================================== -->
+<a href="order.html#cart"
+   class="header-cart"
+   id="headerCart"
+   title="سلة الطلبات"
+   aria-label="سلة الطلبات">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span class="header-cart-badge" id="headerCartCount">0</span>
+</a>
+
+<div class="auth-area">
+        <a href="login.html" class="btn-login" id="loginBtn">
+          <i class="fa-solid fa-user"></i><span>تسجيل الدخول</span>
+        </a>
+        <div class="dropdown">
+          <div class="profile-circle d-none" id="profileCircle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="images/user-avatar-default.png" id="profileAvatar" alt="صورة المستخدم"
+                 onerror="this.src='https://placehold.co/90x90/E8823C/FFFFFF?text=U'">
+          </div>
+          <ul class="dropdown-menu dropdown-menu-end profile-menu" id="profileMenu">
+            <li><h6 class="dropdown-header profile-name-display">مستخدم</h6></li>
+            <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="fa-solid fa-pen"></i> تعديل الملف الشخصي</button></li>
+            <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal"><i class="fa-solid fa-key"></i> تغيير كلمة المرور</button></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item text-danger" type="button" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> تسجيل الخروج</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
+      <a href="products.html" class="nav-item active"><i class="fa-solid fa-couch"></i><span>المنتجات</span></a>
+      <a href="order.html" class="nav-item"><i class="fa-solid fa-ruler-combined"></i><span>اطلب حسب طلبك</span></a>
+      <a href="about.html" class="nav-item"><i class="fa-solid fa-industry"></i><span>نبذة عنا</span></a>
+      <a href="contact.html" class="nav-item"><i class="fa-solid fa-phone"></i><span>اتصل بنا</span></a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================= محتوى صفحة المنتجات ============================= -->
+<main class="products-page">
+  <div class="container">
+    <div class="section-title">
+      <h2>منتجاتنا</h2>
+      <p>تصفح المنتجات حسب الاستخدام، مع صورة واضحة واسم ووصف ومقاس وسعر استرشادي لكل منتج.</p>
+    </div>
+
+    <!-- ستُملأ الصفوف الأربعة تلقائيًا هنا بواسطة js/script.js من مصفوفة productCategories
+         (كل صف = فئة منتجات، وكل حاوية = منتج واحد يحتوي: صورة - اسم - مقاسات - سعر)
+         لتعديل المنتجات: افتح js/script.js وابحث عن "productCategories" -->
+    <div id="productsWrap"></div>
+  </div>
+</main>
+
+<!-- ============================= التذييل ============================= -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="yearNow">2026</span> فيلورا للإسفنج والمراتب - جميع الحقوق محفوظة</p>
+    <div class="footer-social">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/967784702558" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- نوافذ الملف الشخصي وكلمة المرور (نفس نوافذ الصفحة الرئيسية) -->
+<div class="modal fade" id="editProfileModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa-solid fa-pen"></i> تعديل الملف الشخصي</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form id="editProfileForm">
+        <div class="modal-body">
+          <div class="text-center mb-3">
+            <img id="editAvatarPreview" src="images/user-avatar-default.png" alt="صورة الملف الشخصي"
+                 style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid var(--color-accent);"
+                 onerror="this.src='https://placehold.co/90x90/E8823C/FFFFFF?text=U'">
+            <div class="mt-2">
+              <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+                تغيير الصورة <input type="file" id="editAvatarInput" accept="image/*" hidden>
+              </label>
+            </div>
+          </div>
+          <div class="form-group"><label>الاسم</label><input type="text" class="form-control" id="editName" required></div>
+          <div class="form-group"><label>اسم المستخدم</label><input type="text" class="form-control" id="editUsername" required></div>
+        </div>
+        <div class="modal-footer"><button type="submit" class="btn btn-primary btn-block">حفظ التعديلات</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa-solid fa-key"></i> تغيير كلمة المرور</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="step-badge">
+          <span class="active" data-step="1">١. طلب الرمز</span>
+          <span data-step="2">٢. التحقق والتغيير</span>
+        </div>
+        <div class="step-pane active" data-step="1">
+          <p>سيتم إرسال رمز تحقق إلى بريدك الإلكتروني المسجل: <b id="pwdEmailDisplay">example@mail.com</b></p>
+          <button type="button" id="sendCodeBtn" class="btn btn-primary btn-block">إرسال رمز التحقق</button>
+        </div>
+        <div class="step-pane" data-step="2">
+          <form id="verifyCodeForm">
+            <div class="form-group">
+              <label>رمز التحقق</label>
+              <input type="text" class="form-control" id="codeInput" maxlength="4" required>
+              <div class="field-error" id="codeError"></div>
+            </div>
+            <div class="form-group"><label>كلمة المرور الجديدة</label><input type="password" class="form-control" id="newPasswordInput" required></div>
+            <div class="form-group">
+              <label>تأكيد كلمة المرور</label>
+              <input type="password" class="form-control" id="confirmPasswordInput" required>
+              <div class="field-error" id="passError"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">تغيير كلمة المرور</button>
+            <button type="button" id="resendCodeBtn" class="btn btn-outline btn-block mt-2">إعادة إرسال الرمز</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/script.js"></script>
+<script>document.getElementById('yearNow').textContent = new Date().getFullYear();</script>
+</body>
+</html>
